@@ -2,6 +2,14 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter import filedialog
 from pytubefix import YouTube
+import os
+
+def resource_path(path):
+    try:
+        abspath = sys._MEIPASS
+    except Exception:
+        abspath = os.path.abspath(".")
+    return os.path.join(abspath,path)
 
 
 # 리팩토링 진행
@@ -16,8 +24,8 @@ height = '550'
 root.geometry('{}x{}'.format(width,height))
 root.resizable(False,False)
 
-banner = PhotoImage(file="./assets/banner.png")
-logo = PhotoImage(file='./assets/logo.png')
+banner = PhotoImage(file=resource_path('./assets/banner.png'))
+logo = PhotoImage(file=resource_path('./assets/logo.png'))
 
 root.wm_iconphoto(False,logo)
 
